@@ -14,6 +14,9 @@
 		10C2F7242400A847003A1B29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C2F7222400A847003A1B29 /* Main.storyboard */; };
 		10C2F7262400A849003A1B29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10C2F7252400A849003A1B29 /* Assets.xcassets */; };
 		10C2F7292400A849003A1B29 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10C2F7272400A849003A1B29 /* LaunchScreen.storyboard */; };
+		10C2F7312400C7EC003A1B29 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C2F7302400C7EC003A1B29 /* AboutViewController.swift */; };
+		10C2F7332400D89B003A1B29 /* UserScoreTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C2F7322400D89B003A1B29 /* UserScoreTabBarController.swift */; };
+		10FF68E32401DBB40025E3C3 /* UserScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FF68E22401DBB40025E3C3 /* UserScore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		10C2F7252400A849003A1B29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10C2F7282400A849003A1B29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10C2F72A2400A849003A1B29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10C2F7302400C7EC003A1B29 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		10C2F7322400D89B003A1B29 /* UserScoreTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScoreTabBarController.swift; sourceTree = "<group>"; };
+		10FF68E22401DBB40025E3C3 /* UserScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserScore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +68,13 @@
 				10C2F71C2400A847003A1B29 /* SceneDelegate.swift */,
 				10C2F71E2400A847003A1B29 /* FirstViewController.swift */,
 				10C2F7202400A847003A1B29 /* SecondViewController.swift */,
+				10C2F7302400C7EC003A1B29 /* AboutViewController.swift */,
 				10C2F7222400A847003A1B29 /* Main.storyboard */,
 				10C2F7252400A849003A1B29 /* Assets.xcassets */,
 				10C2F7272400A849003A1B29 /* LaunchScreen.storyboard */,
 				10C2F72A2400A849003A1B29 /* Info.plist */,
+				10C2F7322400D89B003A1B29 /* UserScoreTabBarController.swift */,
+				10FF68E22401DBB40025E3C3 /* UserScore.swift */,
 			);
 			path = Tabbers;
 			sourceTree = "<group>";
@@ -142,8 +151,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				10C2F7212400A847003A1B29 /* SecondViewController.swift in Sources */,
+				10FF68E32401DBB40025E3C3 /* UserScore.swift in Sources */,
+				10C2F7332400D89B003A1B29 /* UserScoreTabBarController.swift in Sources */,
 				10C2F71F2400A847003A1B29 /* FirstViewController.swift in Sources */,
 				10C2F71B2400A847003A1B29 /* AppDelegate.swift in Sources */,
+				10C2F7312400C7EC003A1B29 /* AboutViewController.swift in Sources */,
 				10C2F71D2400A847003A1B29 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
