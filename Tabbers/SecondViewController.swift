@@ -15,13 +15,17 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     private let colorOptions = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green, UIColor.purple, UIColor.orange]
     private let colorOptionNames = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
     
-    private let masterColor = Int(arc4random_uniform(6))
+    private var masterColor = Int(arc4random_uniform(6))
     var userScore = UserScore()
     
     @IBOutlet weak var colorPicker: UIPickerView!
     
     @IBOutlet weak var matchColorBox: UITextView!
     
+    @IBAction func changeMasterColor(_ sender: Any) {
+        masterColor = Int(arc4random_uniform(6))
+        matchColorBox.backgroundColor = colorOptions[masterColor]
+    }
     @IBAction func matchButton(_ sender: Any) {
         switch masterColor {
         case 0:
@@ -101,11 +105,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         matchColorBox.backgroundColor = colorOptions[masterColor]
         
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-      
-    }
+
 
     
 }

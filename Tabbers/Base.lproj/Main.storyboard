@@ -111,6 +111,9 @@
                                 <rect key="frame" x="158" y="680" width="99" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Gimme a color"/>
+                                <connections>
+                                    <action selector="changeMasterColor:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="QBZ-is-zyd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
