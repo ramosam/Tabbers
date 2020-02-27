@@ -15,11 +15,48 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     private let numberOptions = ["0", "1", "2", "3", "4", "5"]
     private var code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
-    
+    @IBOutlet weak var hintLabel: UILabel!
+    private let alignArray = [NSTextAlignment.left, .center, .right]
     @IBOutlet weak var picker1: UIPickerView!
     var userScore = UserScore()
+    
     // Lab 8
     var defaults = UserDefaults.standard
+    
+    @IBAction func hintToggle(_ sender: Any) {
+        let toggle = sender as! UISwitch
+        if toggle.isOn {
+            hintLabel.isHidden = false
+            defaults.set(false, forKey: "isHidden")
+        } else {
+            hintLabel.isHidden = true
+            hintLabel.text = "\(code[defaults.integer(forKey: "numAlignIndex")])"
+            defaults.set(true, forKey: "isHidden")
+        }
+    }
+    
+
+    @IBAction func pickSpinHint(_ sender: Any) {
+        let hintButton = sender as! UISegmentedControl
+        switch hintButton.selectedSegmentIndex {
+        case 0:
+            hintLabel.textAlignment = alignArray[0]
+            hintLabel.text = "\(code[0])"
+            defaults.set(0, forKey: "numAlignIndex")
+        case 1:
+            hintLabel.textAlignment = alignArray[1]
+            hintLabel.text = "\(code[1])"
+            defaults.set(1, forKey: "numAlignIndex")
+        case 2:
+            hintLabel.textAlignment = alignArray[2]
+            hintLabel.text = "\(code[2])"
+            defaults.set(2, forKey: "numAlignIndex")
+        default:
+            hintLabel.textAlignment = alignArray[0]
+            defaults.set(0, forKey: "numAlignIndex")
+        }
+        
+    }
     
     
     
@@ -36,6 +73,9 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             self.present(alert, animated: true, completion: nil)
         }
     }
+    
+
+    
     
     @IBAction func newCodeButton(_ sender: Any) {
         code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
@@ -64,6 +104,8 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     override func viewWillAppear(_ animated: Bool) {
         // Get new code in range 0 ... 1
         code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
+        hintLabel.textAlignment = alignArray[defaults.integer(forKey: "numAlignIndex")]
+        hintLabel.isHidden = defaults.bool(forKey: "isHidden")
     }
 
 
