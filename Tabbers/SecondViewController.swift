@@ -14,7 +14,8 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     private let colorOptions = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green, UIColor.purple, UIColor.orange]
     private let colorOptionNames = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
-    
+    private let matchText = "Match Me"
+    private let spinnerColors = [UIColor.purple, UIColor.green, UIColor.orange]
     private var masterColor = Int(arc4random_uniform(6))
     var userScore = UserScore()
     // Lab 8
@@ -28,6 +29,34 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         masterColor = Int(arc4random_uniform(6))
         matchColorBox.backgroundColor = colorOptions[masterColor]
     }
+    
+    @IBAction func changeMatchColorBoxText(_ sender: Any) {
+        let segmentedControl = sender as! UISegmentedControl
+        if segmentedControl.selectedSegmentIndex == 0 {
+            matchColorBox.text = ""
+            defaults.set("", forKey: matchText)
+        } else {
+            matchColorBox.text = matchText
+            defaults.set(matchText, forKey: matchText)
+        }
+    }
+    
+    @IBAction func spinnerColorControl(_ sender: Any) {
+        let segmentedControl = sender as! UISegmentedControl
+        if segmentedControl.selectedSegmentIndex == 0 {
+            colorPicker.backgroundColor = spinnerColors[0]
+            defaults.set(0, forKey: "spinnerColorIndex")
+        } else if segmentedControl.selectedSegmentIndex == 1 {
+            colorPicker.backgroundColor = spinnerColors[1]
+            defaults.set(1, forKey: "spinnerColorIndex")
+        } else {
+            colorPicker.backgroundColor = spinnerColors[2]
+            defaults.set(2, forKey: "spinnerColorIndex")
+        }
+    }
+    
+    
+    
     @IBAction func matchButton(_ sender: Any) {
         switch masterColor {
         case 0:
@@ -101,12 +130,14 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         // Do any additional setup after loading the view.
         let tabBarVC = self.tabBarController as! UserScoreTabBarController
         userScore = tabBarVC.userScore
-
+        matchColorBox.text = defaults.string(forKey: matchText)
+        colorPicker.backgroundColor = spinnerColors[defaults.integer(forKey: "spinnerColorIndex")]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         matchColorBox.backgroundColor = colorOptions[masterColor]
-        
+        matchColorBox.text = defaults.string(forKey: matchText)
+        colorPicker.backgroundColor = spinnerColors[defaults.integer(forKey: "spinnerColorIndex")]
     }
 
 

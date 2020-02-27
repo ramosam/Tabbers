@@ -27,9 +27,12 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let toggle = sender as! UISwitch
         if toggle.isOn {
             hintLabel.isHidden = false
+            hintLabel.textAlignment = alignArray[defaults.integer(forKey: "numAlignIndex")]
+            hintLabel.text = "\(code[defaults.integer(forKey: "numAlignIndex")])"
             defaults.set(false, forKey: "isHidden")
         } else {
             hintLabel.isHidden = true
+            hintLabel.textAlignment = alignArray[defaults.integer(forKey: "numAlignIndex")]
             hintLabel.text = "\(code[defaults.integer(forKey: "numAlignIndex")])"
             defaults.set(true, forKey: "isHidden")
         }
@@ -53,6 +56,7 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             defaults.set(2, forKey: "numAlignIndex")
         default:
             hintLabel.textAlignment = alignArray[0]
+            hintLabel.text = "\(code[0])"
             defaults.set(0, forKey: "numAlignIndex")
         }
         
