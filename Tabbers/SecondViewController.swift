@@ -17,6 +17,8 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     private var masterColor = Int(arc4random_uniform(6))
     var userScore = UserScore()
+    // Lab 8
+    var defaults = UserDefaults.standard
     
     @IBOutlet weak var colorPicker: UIPickerView!
     
@@ -63,6 +65,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         default:
             userScore.colorScore += 0
         }
+        defaults.set(userScore.colorScore, forKey: "colScore")
     }
     
     func showAlert() {

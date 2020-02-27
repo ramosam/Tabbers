@@ -12,6 +12,9 @@ import UIKit
 class AboutViewController: UIViewController {
     
     var userScore = UserScore()
+    // Lab 8
+    var defaults = UserDefaults.standard
+    
     @IBOutlet weak var winLabel: UILabel!
     
     
@@ -24,7 +27,13 @@ class AboutViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        winLabel.text = "\(userScore.totalScore())"
+        // using subclass container
+//        winLabel.text = "\(userScore.totalScore())"
+        
+        // using UserDefaults
+        // get both view's scores
+        let combinedScore = defaults.integer(forKey: "numScore") + defaults.integer(forKey: "colScore")
+        winLabel.text = "\(combinedScore)"
     }
     
 }

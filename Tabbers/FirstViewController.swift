@@ -18,6 +18,9 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     
     @IBOutlet weak var picker1: UIPickerView!
     var userScore = UserScore()
+    // Lab 8
+    var defaults = UserDefaults.standard
+    
     
     
     @IBAction func crackButton(_ sender: Any) {
@@ -25,6 +28,8 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         picker1.selectedRow(inComponent: 1) == self.code[1] && picker1.selectedRow(inComponent: 2) == self.code[2] {
             
             userScore.numScore += 1
+            // Set defaults
+            defaults.set(userScore.numScore, forKey: "numScore")
             
             let alert = UIAlertController(title: "Success", message: "You cracked the code", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Awesome", style: .default))
@@ -33,7 +38,7 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     }
     
     @IBAction func newCodeButton(_ sender: Any) {
-        self.code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
+        code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,7 +61,10 @@ class FirstViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         userScore = tabBarVC.userScore
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        // Get new code in range 0 ... 1
+        code = [Int(arc4random_uniform(2)), Int(arc4random_uniform(2)), Int(arc4random_uniform(2))]
+    }
 
 
 }
