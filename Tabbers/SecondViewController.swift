@@ -15,12 +15,22 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     private let colorOptions = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.green, UIColor.purple, UIColor.orange]
     private let colorOptionNames = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
     private let matchText = "Match Me"
+    private let matchKey = "matchKey"
+    private let hideMatchTextToggleIndex = 0
+    private let hideMatchText = "hideMatchText"
+    private let colScore = "colScore"
+    private let colScoreDefault = 0
+    private let spinValue = 0
+    private let spinnerColorIndex = "spinnerColorIndex"
+    
     private let spinnerColors = [UIColor.purple, UIColor.green, UIColor.orange]
     private var masterColor = Int(arc4random_uniform(6))
     var userScore = UserScore()
     // Lab 8
-    var defaults = UserDefaults.standard
     
+    
+    @IBOutlet weak var hideMatchTextToggle: UISegmentedControl!
+    @IBOutlet weak var colorPickerControl: UISegmentedControl!
     @IBOutlet weak var colorPicker: UIPickerView!
     
     @IBOutlet weak var matchColorBox: UITextView!
@@ -34,10 +44,12 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let segmentedControl = sender as! UISegmentedControl
         if segmentedControl.selectedSegmentIndex == 0 {
             matchColorBox.text = ""
-            defaults.set("", forKey: matchText)
+            UserDefaults.standard.set("", forKey: matchKey)
+            UserDefaults.standard.set(0, forKey: hideMatchText)
         } else {
             matchColorBox.text = matchText
-            defaults.set(matchText, forKey: matchText)
+            UserDefaults.standard.set(matchText, forKey: matchKey)
+            UserDefaults.standard.set(1, forKey: hideMatchText)
         }
     }
     
@@ -45,13 +57,13 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         let segmentedControl = sender as! UISegmentedControl
         if segmentedControl.selectedSegmentIndex == 0 {
             colorPicker.backgroundColor = spinnerColors[0]
-            defaults.set(0, forKey: "spinnerColorIndex")
+            UserDefaults.standard.set(0, forKey: spinnerColorIndex)
         } else if segmentedControl.selectedSegmentIndex == 1 {
             colorPicker.backgroundColor = spinnerColors[1]
-            defaults.set(1, forKey: "spinnerColorIndex")
+            UserDefaults.standard.set(1, forKey: spinnerColorIndex)
         } else {
             colorPicker.backgroundColor = spinnerColors[2]
-            defaults.set(2, forKey: "spinnerColorIndex")
+            UserDefaults.standard.set(2, forKey: spinnerColorIndex)
         }
     }
     
@@ -94,7 +106,7 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         default:
             userScore.colorScore += 0
         }
-        defaults.set(userScore.colorScore, forKey: "colScore")
+        UserDefaults.standard.set(userScore.colorScore, forKey: colScore)
     }
     
     func showAlert() {
@@ -120,7 +132,6 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         return NSAttributedString(string: colorOptionNames[row], attributes: [
             NSAttributedString.Key.foregroundColor: colorOptions[row]
         ])
-        
     }
     
     
@@ -128,19 +139,30 @@ class SecondViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if !UserDefaults.standard.bool(forKey: "defaultColorSet") {
+            UserDefaults.standard.set(spinValue, forKey: spinnerColorIndex)
+            UserDefaults.standard.set(matchText, forKey: matchKey)
+            UserDefaults.standard.set(colScoreDefault, forKey: colScore)
+            UserDefaults.standard.set(hideMatchTextToggleIndex, forKey: hideMatchText)
+            UserDefaults.standard.set(true, forKey: "defaultColorSet")
+        }
+
         let tabBarVC = self.tabBarController as! UserScoreTabBarController
         userScore = tabBarVC.userScore
-        matchColorBox.text = defaults.string(forKey: matchText)
-        colorPicker.backgroundColor = spinnerColors[defaults.integer(forKey: "spinnerColorIndex")]
+        matchColorBox.text = UserDefaults.standard.string(forKey: matchKey)
+        colorPicker.backgroundColor = spinnerColors[UserDefaults.standard.integer(forKey: spinnerColorIndex)]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+
+    override func viewDidAppear(_ animated: Bool) {
+        masterColor = Int(arc4random_uniform(6))
         matchColorBox.backgroundColor = colorOptions[masterColor]
-        matchColorBox.text = defaults.string(forKey: matchText)
-        colorPicker.backgroundColor = spinnerColors[defaults.integer(forKey: "spinnerColorIndex")]
+        userScore.colorScore = UserDefaults.standard.integer(forKey: colScore)
+        colorPicker.backgroundColor = spinnerColors[UserDefaults.standard.integer(forKey: spinnerColorIndex)]
+        hideMatchTextToggle.selectedSegmentIndex = UserDefaults.standard.integer(forKey: hideMatchText)
+        matchColorBox.text = UserDefaults.standard.string(forKey: matchKey)
+        colorPickerControl.selectedSegmentIndex = UserDefaults.standard.integer(forKey: spinnerColorIndex)
     }
-
-
     
 }
 

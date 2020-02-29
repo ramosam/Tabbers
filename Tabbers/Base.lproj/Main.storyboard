@@ -105,7 +105,9 @@
                     <tabBarItem key="tabBarItem" title="Numbers" image="number" catalog="system" selectedImage="number" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="hintLabel" destination="7N5-MV-rce" id="05x-Q1-TBv"/>
+                        <outlet property="hintToggler" destination="30M-0p-05H" id="OB7-DQ-63j"/>
                         <outlet property="picker1" destination="dbF-WR-iNa" id="ulp-oj-ggJ"/>
+                        <outlet property="spinIndex" destination="Pde-gN-1Yp" id="eCZ-CW-HfM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -219,6 +221,8 @@
                     <tabBarItem key="tabBarItem" title="Colors" image="cloud.fill" catalog="system" selectedImage="cloud.fill" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="colorPicker" destination="Zp7-jF-Rm6" id="xoK-iG-bJQ"/>
+                        <outlet property="colorPickerControl" destination="4Wk-i3-s8Z" id="omQ-pC-buu"/>
+                        <outlet property="hideMatchTextToggle" destination="QVc-ar-aH6" id="g2W-iX-tbD"/>
                         <outlet property="matchColorBox" destination="S6D-fz-8op" id="FvC-RA-PhU"/>
                     </connections>
                 </viewController>

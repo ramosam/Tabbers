@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class UserScoreTabBarController: UITabBarController {
-
+    
     var userScore = UserScore()
 }
 
