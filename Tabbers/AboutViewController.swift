@@ -16,12 +16,15 @@ class AboutViewController: UIViewController {
     
     @IBOutlet weak var winLabel: UILabel!
     
+    @IBOutlet weak var nameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         let tabBarVC = self.tabBarController as! UserScoreTabBarController
         userScore = tabBarVC.userScore
+        let placeholder = UserDefaults.standard.string(forKey: "name")
+        nameLabel.text = placeholder == "" ? "" : "Good job \(placeholder ?? "")!"
         
     }
     

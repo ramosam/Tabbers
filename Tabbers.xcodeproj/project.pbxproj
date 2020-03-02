@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1045925A240DC8B600B71C98 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10459259240DC8B600B71C98 /* Settings.bundle */; };
 		10C2F71B2400A847003A1B29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C2F71A2400A847003A1B29 /* AppDelegate.swift */; };
 		10C2F71D2400A847003A1B29 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C2F71C2400A847003A1B29 /* SceneDelegate.swift */; };
 		10C2F71F2400A847003A1B29 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C2F71E2400A847003A1B29 /* FirstViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10459259240DC8B600B71C98 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		10C2F7172400A847003A1B29 /* Tabbers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tabbers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10C2F71A2400A847003A1B29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10C2F71C2400A847003A1B29 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				10C2F72A2400A849003A1B29 /* Info.plist */,
 				10C2F7322400D89B003A1B29 /* UserScoreTabBarController.swift */,
 				10FF68E22401DBB40025E3C3 /* UserScore.swift */,
+				10459259240DC8B600B71C98 /* Settings.bundle */,
 			);
 			path = Tabbers;
 			sourceTree = "<group>";
@@ -137,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1045925A240DC8B600B71C98 /* Settings.bundle in Resources */,
 				10C2F7292400A849003A1B29 /* LaunchScreen.storyboard in Resources */,
 				10C2F7262400A849003A1B29 /* Assets.xcassets in Resources */,
 				10C2F7242400A847003A1B29 /* Main.storyboard in Resources */,
