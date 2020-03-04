@@ -23,8 +23,12 @@ class AboutViewController: UIViewController {
         // Do any additional setup after loading the view.
         let tabBarVC = self.tabBarController as! UserScoreTabBarController
         userScore = tabBarVC.userScore
+        let splash = UserDefaults.standard.bool(forKey: "showSplash")
         let placeholder = UserDefaults.standard.string(forKey: "name")
-        nameLabel.text = placeholder == "" ? "" : "Good job \(placeholder ?? "")!"
+        if splash {
+            nameLabel.text = placeholder == "" ? "" : "Good job \(placeholder ?? "")!"
+        }
+        
         
     }
     
